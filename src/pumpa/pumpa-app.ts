@@ -9,5 +9,6 @@ export class PumpaApp {
 
   async get(path: string, callback: Handler) {
     this.server.get(path, callback);
+    return this;
   }
 }
