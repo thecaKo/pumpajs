@@ -61,6 +61,39 @@ app.listen({
 })
 ```
 
+## Como Rodar
+
+Instale as dependencias:
+
+```bash
+pnpm install
+```
+
+Compile o projeto:
+
+```bash
+pnpm build
+```
+
+Rode os testes:
+
+```bash
+pnpm test
+```
+
+Rode o exemplo minimo:
+
+```bash
+pnpm build
+node dist/examples/basic.js
+```
+
+Rode o placeholder de benchmark:
+
+```bash
+pnpm benchmark
+```
+
 ## Status
 
 Projeto em fase inicial de planejamento e fundação.
