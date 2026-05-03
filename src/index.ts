@@ -1,5 +1,7 @@
+import { Server } from './http/server.js';
+import { PumpaApp } from './pumpa/pumpa-app.js';
+
 export function pumpa() {
-  return {
-    name: 'pumpajs',
-  };
+  const server = new Server();
+  return new PumpaApp(server);
 }
