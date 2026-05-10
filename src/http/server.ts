@@ -60,7 +60,24 @@ export class Server {
       return;
     }
 
-    return this.routes[req.method].find((route) => route.path === req.url);
+    const pathname = new URL(req.url, 'http:localhost').pathname;
+    const receveidSegments = pathname.split('/').filter(Boolean);
+
+    return this.routes[req.method].find((route) => {
+      const routeSegments = route.path.split('/').filter(Boolean);
+
+      if (routeSegments.length !== receveidSegments.length) return false;
+
+      return routeSegments.every((routeSegment, index) => {
+        const receivedSegment = receveidSegments[index];
+
+        if (routeSegment.startsWith(':')) {
+          return true;
+        }
+
+        return routeSegment === receivedSegment;
+      });
+    });
   }
 
   private isHttpMethod(method: string): method is HttpMethod {
